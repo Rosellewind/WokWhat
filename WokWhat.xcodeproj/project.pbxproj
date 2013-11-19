@@ -22,6 +22,21 @@
 		4A20FC9D183A8D290048F93C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A20FC81183A8D280048F93C /* CoreData.framework */; };
 		4A20FCA5183A8D290048F93C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A20FCA3183A8D290048F93C /* InfoPlist.strings */; };
 		4A20FCA7183A8D290048F93C /* WokWhatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A20FCA6183A8D290048F93C /* WokWhatTests.m */; };
+		4AEE4979183BC4520045A610 /* cookbook.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4971183BC4520045A610 /* cookbook.png */; };
+		4AEE497A183BC4520045A610 /* foodBits.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4972183BC4520045A610 /* foodBits.png */; };
+		4AEE497B183BC4520045A610 /* backgroundWokWhat.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4973183BC4520045A610 /* backgroundWokWhat.png */; };
+		4AEE497C183BC4520045A610 /* buttonLetsCook.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4974183BC4520045A610 /* buttonLetsCook.png */; };
+		4AEE497D183BC4520045A610 /* catWokFire.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4975183BC4520045A610 /* catWokFire.png */; };
+		4AEE497E183BC4520045A610 /* eggplant.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4976183BC4520045A610 /* eggplant.png */; };
+		4AEE497F183BC4520045A610 /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4977183BC4520045A610 /* orange.png */; };
+		4AEE4980183BC4520045A610 /* spoon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4978183BC4520045A610 /* spoon.png */; };
+		4AEE4988183BC5220045A610 /* AddRecipeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4983183BC5220045A610 /* AddRecipeVC.m */; };
+		4AEE4989183BC5220045A610 /* CookbookVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4985183BC5220045A610 /* CookbookVC.m */; };
+		4AEE498A183BC5220045A610 /* DocumentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4987183BC5220045A610 /* DocumentHelper.m */; };
+		4AEE498D183BC6CA0045A610 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE498B183BC6CA0045A610 /* Main_iPhone.storyboard */; };
+		4AEE498E183BC6CA0045A610 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE498C183BC6CA0045A610 /* Main_iPad.storyboard */; };
+		4AEE4995183BCB920045A610 /* Recipe+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4994183BCB920045A610 /* Recipe+Create.m */; };
+		4AEE499E183BD3E00045A610 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE499D183BD3E00045A610 /* Recipe.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +68,26 @@
 		4A20FCA2183A8D290048F93C /* WokWhatTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WokWhatTests-Info.plist"; sourceTree = "<group>"; };
 		4A20FCA4183A8D290048F93C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4A20FCA6183A8D290048F93C /* WokWhatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WokWhatTests.m; sourceTree = "<group>"; };
+		4AEE4971183BC4520045A610 /* cookbook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cookbook.png; sourceTree = "<group>"; };
+		4AEE4972183BC4520045A610 /* foodBits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foodBits.png; sourceTree = "<group>"; };
+		4AEE4973183BC4520045A610 /* backgroundWokWhat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundWokWhat.png; sourceTree = "<group>"; };
+		4AEE4974183BC4520045A610 /* buttonLetsCook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonLetsCook.png; sourceTree = "<group>"; };
+		4AEE4975183BC4520045A610 /* catWokFire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = catWokFire.png; sourceTree = "<group>"; };
+		4AEE4976183BC4520045A610 /* eggplant.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eggplant.png; sourceTree = "<group>"; };
+		4AEE4977183BC4520045A610 /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
+		4AEE4978183BC4520045A610 /* spoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spoon.png; sourceTree = "<group>"; };
+		4AEE4982183BC5220045A610 /* AddRecipeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRecipeVC.h; sourceTree = "<group>"; };
+		4AEE4983183BC5220045A610 /* AddRecipeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRecipeVC.m; sourceTree = "<group>"; };
+		4AEE4984183BC5220045A610 /* CookbookVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CookbookVC.h; sourceTree = "<group>"; };
+		4AEE4985183BC5220045A610 /* CookbookVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CookbookVC.m; sourceTree = "<group>"; };
+		4AEE4986183BC5220045A610 /* DocumentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DocumentHelper.h; sourceTree = "<group>"; };
+		4AEE4987183BC5220045A610 /* DocumentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DocumentHelper.m; sourceTree = "<group>"; };
+		4AEE498B183BC6CA0045A610 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
+		4AEE498C183BC6CA0045A610 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
+		4AEE4993183BCB920045A610 /* Recipe+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Recipe+Create.h"; sourceTree = "<group>"; };
+		4AEE4994183BCB920045A610 /* Recipe+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Recipe+Create.m"; sourceTree = "<group>"; };
+		4AEE499C183BD3E00045A610 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
+		4AEE499D183BD3E00045A610 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +150,19 @@
 		4A20FC83183A8D280048F93C /* WokWhat */ = {
 			isa = PBXGroup;
 			children = (
+				4AEE4981183BC45B0045A610 /* Images */,
 				4A20FC8C183A8D290048F93C /* AppDelegate.h */,
 				4A20FC8D183A8D290048F93C /* AppDelegate.m */,
+				4AEE498B183BC6CA0045A610 /* Main_iPhone.storyboard */,
+				4AEE498C183BC6CA0045A610 /* Main_iPad.storyboard */,
+				4AEE4982183BC5220045A610 /* AddRecipeVC.h */,
+				4AEE4983183BC5220045A610 /* AddRecipeVC.m */,
+				4AEE4984183BC5220045A610 /* CookbookVC.h */,
+				4AEE4985183BC5220045A610 /* CookbookVC.m */,
+				4AEE4986183BC5220045A610 /* DocumentHelper.h */,
+				4AEE4987183BC5220045A610 /* DocumentHelper.m */,
 				4A20FC92183A8D290048F93C /* Images.xcassets */,
-				4A20FC8F183A8D290048F93C /* WokWhat.xcdatamodeld */,
+				4AEE4992183BCB5F0045A610 /* Core Data */,
 				4A20FC84183A8D280048F93C /* Supporting Files */,
 			);
 			path = WokWhat;
@@ -151,6 +195,33 @@
 				4A20FCA3183A8D290048F93C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4AEE4981183BC45B0045A610 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				4AEE4971183BC4520045A610 /* cookbook.png */,
+				4AEE4972183BC4520045A610 /* foodBits.png */,
+				4AEE4973183BC4520045A610 /* backgroundWokWhat.png */,
+				4AEE4974183BC4520045A610 /* buttonLetsCook.png */,
+				4AEE4975183BC4520045A610 /* catWokFire.png */,
+				4AEE4976183BC4520045A610 /* eggplant.png */,
+				4AEE4977183BC4520045A610 /* orange.png */,
+				4AEE4978183BC4520045A610 /* spoon.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		4AEE4992183BCB5F0045A610 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				4A20FC8F183A8D290048F93C /* WokWhat.xcdatamodeld */,
+				4AEE499C183BD3E00045A610 /* Recipe.h */,
+				4AEE499D183BD3E00045A610 /* Recipe.m */,
+				4AEE4993183BCB920045A610 /* Recipe+Create.h */,
+				4AEE4994183BCB920045A610 /* Recipe+Create.m */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,8 +299,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AEE497B183BC4520045A610 /* backgroundWokWhat.png in Resources */,
+				4AEE497E183BC4520045A610 /* eggplant.png in Resources */,
 				4A20FC88183A8D280048F93C /* InfoPlist.strings in Resources */,
+				4AEE497A183BC4520045A610 /* foodBits.png in Resources */,
+				4AEE4979183BC4520045A610 /* cookbook.png in Resources */,
 				4A20FC93183A8D290048F93C /* Images.xcassets in Resources */,
+				4AEE497C183BC4520045A610 /* buttonLetsCook.png in Resources */,
+				4AEE497D183BC4520045A610 /* catWokFire.png in Resources */,
+				4AEE497F183BC4520045A610 /* orange.png in Resources */,
+				4AEE498E183BC6CA0045A610 /* Main_iPad.storyboard in Resources */,
+				4AEE4980183BC4520045A610 /* spoon.png in Resources */,
+				4AEE498D183BC6CA0045A610 /* Main_iPhone.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +330,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A20FC8E183A8D290048F93C /* AppDelegate.m in Sources */,
+				4AEE4995183BCB920045A610 /* Recipe+Create.m in Sources */,
 				4A20FC91183A8D290048F93C /* WokWhat.xcdatamodeld in Sources */,
+				4AEE499E183BD3E00045A610 /* Recipe.m in Sources */,
+				4AEE4988183BC5220045A610 /* AddRecipeVC.m in Sources */,
+				4AEE4989183BC5220045A610 /* CookbookVC.m in Sources */,
+				4AEE498A183BC5220045A610 /* DocumentHelper.m in Sources */,
 				4A20FC8A183A8D280048F93C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -453,6 +539,7 @@
 				4A20FCAC183A8D290048F93C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4A20FCAD183A8D290048F93C /* Build configuration list for PBXNativeTarget "WokWhatTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +548,7 @@
 				4A20FCAF183A8D290048F93C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
