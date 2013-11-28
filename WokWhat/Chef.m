@@ -1,21 +1,20 @@
 //
-//  Recipe.m
+//  Chef.m
 //  WokWhat
 //
 //  Created by Roselle Milvich on 11/28/13.
 //  Copyright (c) 2013 Roselle Milvich. All rights reserved.
 //
 
-#import "Recipe.h"
 #import "Chef.h"
+#import "Recipe.h"
 
 
-@implementation Recipe
+@implementation Chef
 
+@dynamic username;
 @dynamic dateAdded;
-@dynamic descrip;
 @dynamic name;
-@dynamic identifier;
-@dynamic headChef;
+@dynamic recipe;
 
 @end

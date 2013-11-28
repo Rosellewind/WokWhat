@@ -1,5 +1,5 @@
 //
-//  Recipe.h
+//  Chef.h
 //  WokWhat
 //
 //  Created by Roselle Milvich on 11/28/13.
@@ -9,14 +9,13 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Chef;
+@class Recipe;
 
-@interface Recipe : NSManagedObject
+@interface Chef : NSManagedObject
 
+@property (nonatomic, retain) NSString * username;
 @property (nonatomic, retain) NSDate * dateAdded;
-@property (nonatomic, retain) NSString * descrip;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * identifier;
-@property (nonatomic, retain) Chef *headChef;
+@property (nonatomic, retain) Recipe *recipe;
 
 @end

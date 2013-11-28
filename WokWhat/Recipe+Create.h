@@ -9,8 +9,9 @@
 #import "Recipe.h"
 #define RECIPE_CURRENT_KEY @"Current Recipe Key"
 
-@interface Recipe (Create)
+@interface Recipe (Create)/*<NSCoding>*/
 
+- (NSData*)dataFromDictionary;
 +(Recipe*) recipeWithName:(NSString*) name andDescription:(NSString*) descrip inDocument:(UIManagedDocument*) document;
 +(void) deleteRecipeWithName:(NSString*) name inManagedObjectContext:(NSManagedObjectContext*) context;
 

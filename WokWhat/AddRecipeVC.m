@@ -8,23 +8,38 @@
 
 #import "AddRecipeVC.h"
 #import "DocumentHelper.h"
-//#import "Recipe+create.h"
+#import "Recipe+create.h"
+#import "Chef+Create.h"
 
 @interface AddRecipeVC ()
+@property (weak, nonatomic) IBOutlet UITextField *nameTF;
+@property (weak, nonatomic) IBOutlet UITextField *descripTF;
 
 @end
 
 @implementation AddRecipeVC
-
--(IBAction)finishedEnteringName:(UITextField*)sender{
-    NSString *withoutSpaces = [sender.text stringByReplacingOccurrencesOfString:@" " withString:@""];
+- (IBAction)done:(id)sender {
+    NSString *withoutSpaces = [self.nameTF.text stringByReplacingOccurrencesOfString:@" " withString:@""];
     if (withoutSpaces.length >0)
-        [DocumentHelper openDocumentNamed:sender.text usingBlock:^(UIManagedDocument *document) {
-            if (document)
-                ;//[Recipe recipeWithName:sender.text andDescription:@"temp" inDocument:document];
+        [DocumentHelper openDocumentNamed:self.nameTF.text usingBlock:^(UIManagedDocument *document) {
+            if (document){
+                Recipe *recipe = [Recipe recipeWithName:self.nameTF.text andDescription:self.descripTF.text inDocument:document];
+            
+                //move later/////////////
+                Chef *chef = [Chef chefWithName:@"Chris" andUsername:@"hotPans" inManagedObjectContext:document.managedObjectContext];
+                recipe.headChef = chef;
+                
+                          
+            }
+            
             [self dismissViewControllerAnimated:YES completion:nil];
             
         }];
 }
+    
+- (IBAction)Cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

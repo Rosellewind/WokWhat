@@ -22,6 +22,10 @@
 		4A20FC9D183A8D290048F93C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A20FC81183A8D280048F93C /* CoreData.framework */; };
 		4A20FCA5183A8D290048F93C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4A20FCA3183A8D290048F93C /* InfoPlist.strings */; };
 		4A20FCA7183A8D290048F93C /* WokWhatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A20FCA6183A8D290048F93C /* WokWhatTests.m */; };
+		4A2186A51847529C00A77C4F /* Chef+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2186A41847529C00A77C4F /* Chef+Create.m */; };
+		4A2186AE184767A700A77C4F /* Chef.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2186AD184767A700A77C4F /* Chef.m */; };
+		4A2186B1184767A800A77C4F /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2186B0184767A800A77C4F /* Recipe.m */; };
+		4AB312D71843049E001D2B32 /* Socket.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB312D61843049E001D2B32 /* Socket.m */; };
 		4AEE4979183BC4520045A610 /* cookbook.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4971183BC4520045A610 /* cookbook.png */; };
 		4AEE497A183BC4520045A610 /* foodBits.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4972183BC4520045A610 /* foodBits.png */; };
 		4AEE497B183BC4520045A610 /* backgroundWokWhat.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE4973183BC4520045A610 /* backgroundWokWhat.png */; };
@@ -36,7 +40,7 @@
 		4AEE498D183BC6CA0045A610 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE498B183BC6CA0045A610 /* Main_iPhone.storyboard */; };
 		4AEE498E183BC6CA0045A610 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AEE498C183BC6CA0045A610 /* Main_iPad.storyboard */; };
 		4AEE4995183BCB920045A610 /* Recipe+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE4994183BCB920045A610 /* Recipe+Create.m */; };
-		4AEE499E183BD3E00045A610 /* Recipe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE499D183BD3E00045A610 /* Recipe.m */; };
+		4AEE49A1183BE64C0045A610 /* WokVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AEE49A0183BE64C0045A610 /* WokVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +72,14 @@
 		4A20FCA2183A8D290048F93C /* WokWhatTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WokWhatTests-Info.plist"; sourceTree = "<group>"; };
 		4A20FCA4183A8D290048F93C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4A20FCA6183A8D290048F93C /* WokWhatTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WokWhatTests.m; sourceTree = "<group>"; };
+		4A2186A31847529C00A77C4F /* Chef+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Chef+Create.h"; sourceTree = "<group>"; };
+		4A2186A41847529C00A77C4F /* Chef+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Chef+Create.m"; sourceTree = "<group>"; };
+		4A2186AC184767A700A77C4F /* Chef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chef.h; sourceTree = "<group>"; };
+		4A2186AD184767A700A77C4F /* Chef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Chef.m; sourceTree = "<group>"; };
+		4A2186AF184767A800A77C4F /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
+		4A2186B0184767A800A77C4F /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
+		4AB312D51843049E001D2B32 /* Socket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Socket.h; sourceTree = "<group>"; };
+		4AB312D61843049E001D2B32 /* Socket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Socket.m; sourceTree = "<group>"; };
 		4AEE4971183BC4520045A610 /* cookbook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cookbook.png; sourceTree = "<group>"; };
 		4AEE4972183BC4520045A610 /* foodBits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = foodBits.png; sourceTree = "<group>"; };
 		4AEE4973183BC4520045A610 /* backgroundWokWhat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backgroundWokWhat.png; sourceTree = "<group>"; };
@@ -86,8 +98,8 @@
 		4AEE498C183BC6CA0045A610 /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		4AEE4993183BCB920045A610 /* Recipe+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Recipe+Create.h"; sourceTree = "<group>"; };
 		4AEE4994183BCB920045A610 /* Recipe+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Recipe+Create.m"; sourceTree = "<group>"; };
-		4AEE499C183BD3E00045A610 /* Recipe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipe.h; sourceTree = "<group>"; };
-		4AEE499D183BD3E00045A610 /* Recipe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipe.m; sourceTree = "<group>"; };
+		4AEE499F183BE64C0045A610 /* WokVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WokVC.h; sourceTree = "<group>"; };
+		4AEE49A0183BE64C0045A610 /* WokVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WokVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +173,10 @@
 				4AEE4985183BC5220045A610 /* CookbookVC.m */,
 				4AEE4986183BC5220045A610 /* DocumentHelper.h */,
 				4AEE4987183BC5220045A610 /* DocumentHelper.m */,
+				4AEE499F183BE64C0045A610 /* WokVC.h */,
+				4AEE49A0183BE64C0045A610 /* WokVC.m */,
+				4AB312D51843049E001D2B32 /* Socket.h */,
+				4AB312D61843049E001D2B32 /* Socket.m */,
 				4A20FC92183A8D290048F93C /* Images.xcassets */,
 				4AEE4992183BCB5F0045A610 /* Core Data */,
 				4A20FC84183A8D280048F93C /* Supporting Files */,
@@ -216,8 +232,12 @@
 			isa = PBXGroup;
 			children = (
 				4A20FC8F183A8D290048F93C /* WokWhat.xcdatamodeld */,
-				4AEE499C183BD3E00045A610 /* Recipe.h */,
-				4AEE499D183BD3E00045A610 /* Recipe.m */,
+				4A2186AF184767A800A77C4F /* Recipe.h */,
+				4A2186B0184767A800A77C4F /* Recipe.m */,
+				4A2186AC184767A700A77C4F /* Chef.h */,
+				4A2186AD184767A700A77C4F /* Chef.m */,
+				4A2186A31847529C00A77C4F /* Chef+Create.h */,
+				4A2186A41847529C00A77C4F /* Chef+Create.m */,
 				4AEE4993183BCB920045A610 /* Recipe+Create.h */,
 				4AEE4994183BCB920045A610 /* Recipe+Create.m */,
 			);
@@ -329,11 +349,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A2186A51847529C00A77C4F /* Chef+Create.m in Sources */,
+				4AB312D71843049E001D2B32 /* Socket.m in Sources */,
 				4A20FC8E183A8D290048F93C /* AppDelegate.m in Sources */,
 				4AEE4995183BCB920045A610 /* Recipe+Create.m in Sources */,
 				4A20FC91183A8D290048F93C /* WokWhat.xcdatamodeld in Sources */,
-				4AEE499E183BD3E00045A610 /* Recipe.m in Sources */,
+				4AEE49A1183BE64C0045A610 /* WokVC.m in Sources */,
 				4AEE4988183BC5220045A610 /* AddRecipeVC.m in Sources */,
+				4A2186B1184767A800A77C4F /* Recipe.m in Sources */,
+				4A2186AE184767A700A77C4F /* Chef.m in Sources */,
 				4AEE4989183BC5220045A610 /* CookbookVC.m in Sources */,
 				4AEE498A183BC5220045A610 /* DocumentHelper.m in Sources */,
 				4A20FC8A183A8D280048F93C /* main.m in Sources */,
