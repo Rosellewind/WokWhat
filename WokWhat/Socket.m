@@ -165,9 +165,7 @@ static NSString *unqKey = @"6to$3";
             if(aStream == self.inputStream){
                 uint8_t buffer[1024];
                 int len;
-                int maxNum;
-                int num;
-                while ([self.inputStream hasBytesAvailable] && num < maxNum) {
+                while ([self.inputStream hasBytesAvailable]) {
                     len = (int)[self.inputStream read:buffer maxLength:sizeof(buffer)];
                     if (len > 0) {
                         NSString *output = [[NSString alloc] initWithBytes:buffer length:len encoding:NSASCIIStringEncoding];

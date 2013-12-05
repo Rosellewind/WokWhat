@@ -63,6 +63,7 @@
 		4A5A22EE184D9088002D8064 /* tomatoBit2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A5A22EA184D9088002D8064 /* tomatoBit2.png */; };
 		4A5A22EF184D9088002D8064 /* tomatoBit3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A5A22EB184D9088002D8064 /* tomatoBit3.png */; };
 		4A5A22F1184D914B002D8064 /* onionBit3.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A5A22F0184D914B002D8064 /* onionBit3.png */; };
+		4AA4EE9C18505D3D00D1C15A /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA4EE9B18505D3D00D1C15A /* NSData+Base64.m */; };
 		4AA79F2918494BCD003AC73D /* SignInVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA79F2818494BCD003AC73D /* SignInVC.m */; };
 		4AA79F2E184B1CA2003AC73D /* bubbleHorizontal.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA79F2A184B1CA2003AC73D /* bubbleHorizontal.png */; };
 		4AA79F2F184B1CA3003AC73D /* bubbleVertical.png in Resources */ = {isa = PBXBuildFile; fileRef = 4AA79F2B184B1CA2003AC73D /* bubbleVertical.png */; };
@@ -163,6 +164,8 @@
 		4A5A22EA184D9088002D8064 /* tomatoBit2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tomatoBit2.png; sourceTree = "<group>"; };
 		4A5A22EB184D9088002D8064 /* tomatoBit3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tomatoBit3.png; sourceTree = "<group>"; };
 		4A5A22F0184D914B002D8064 /* onionBit3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onionBit3.png; sourceTree = "<group>"; };
+		4AA4EE9A18505D3D00D1C15A /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		4AA4EE9B18505D3D00D1C15A /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		4AA79F2718494BCD003AC73D /* SignInVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInVC.h; sourceTree = "<group>"; };
 		4AA79F2818494BCD003AC73D /* SignInVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInVC.m; sourceTree = "<group>"; };
 		4AA79F2A184B1CA2003AC73D /* bubbleHorizontal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleHorizontal.png; sourceTree = "<group>"; };
@@ -274,6 +277,8 @@
 				4AEE49A0183BE64C0045A610 /* WokVC.m */,
 				4AB312D51843049E001D2B32 /* Socket.h */,
 				4AB312D61843049E001D2B32 /* Socket.m */,
+				4AA4EE9A18505D3D00D1C15A /* NSData+Base64.h */,
+				4AA4EE9B18505D3D00D1C15A /* NSData+Base64.m */,
 				4A20FC92183A8D290048F93C /* Images.xcassets */,
 				4AEE4992183BCB5F0045A610 /* Core Data */,
 				4A20FC84183A8D280048F93C /* Supporting Files */,
@@ -549,6 +554,7 @@
 				4A2186A51847529C00A77C4F /* Chef+Create.m in Sources */,
 				4AB312D71843049E001D2B32 /* Socket.m in Sources */,
 				4A20FC8E183A8D290048F93C /* AppDelegate.m in Sources */,
+				4AA4EE9C18505D3D00D1C15A /* NSData+Base64.m in Sources */,
 				4AEE4995183BCB920045A610 /* Recipe+Create.m in Sources */,
 				4A5A22A0184D1C63002D8064 /* Recipe.m in Sources */,
 				4A20FC91183A8D290048F93C /* WokWhat.xcdatamodeld in Sources */,

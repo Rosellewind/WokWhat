@@ -10,6 +10,7 @@
 #import "DocumentHelper.h"
 #import "AppDelegate.h"
 #import "Chef+Create.h"
+#import "NSData+Base64.h"
 
 @implementation Recipe (Create)
 
@@ -26,12 +27,30 @@
             [myDictionary setObject:[self.headChef dictionary] forKey:key];
         }
     }
-    NSError *error;
-    NSLog(@"myDictionary:%@",myDictionary);
-    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:myDictionary options:0 error:&error];
-    NSLog(@"jsonData:%@",jsonData);
+    
+    NSData * archive = [NSKeyedArchiver archivedDataWithRootObject:myDictionary];
+    NSLog(@"archive:%@",archive);
 
-    return jsonData;
+    NSString * string = [archive base64EncodedString];
+    NSLog(@"string:%@",string);
+
+    NSData * unarchive    = [NSData dataFromBase64String:string];
+    NSLog(@"unarchive:%@",unarchive);
+
+    NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithData:unarchive];
+    NSLog(@"dic:%@",dic);
+    
+    
+    
+    
+    
+    
+//    NSError *error;
+//    NSLog(@"myDictionary:%@",myDictionary);
+//    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:myDictionary options:0 error:&error];
+//    NSLog(@"jsonData:%@",jsonData);
+
+    return archive;
 }
 
 - (NSDictionary*)dictionaryOfIngredients{
