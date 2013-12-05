@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Recipe+Create.h"
 
 
-@interface WokVC : UIViewController
+@interface WokVC : UIViewController<UIScrollViewDelegate>
 @property (nonatomic, strong) UIManagedDocument *document;
+@property (strong, nonatomic) Recipe *recipe;
+
 @end

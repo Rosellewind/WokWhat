@@ -10,6 +10,7 @@
 #import "DocumentHelper.h"
 #import "Recipe+create.h"
 #import "Chef+Create.h"
+#import "Socket.h"
 
 @interface AddRecipeVC ()
 @property (weak, nonatomic) IBOutlet UITextField *nameTF;
@@ -26,10 +27,8 @@
                 Recipe *recipe = [Recipe recipeWithName:self.nameTF.text andDescription:self.descripTF.text inDocument:document];
             
                 //move later/////////////
-                Chef *chef = [Chef chefWithName:@"Chris" andUsername:@"hotPans" inManagedObjectContext:document.managedObjectContext];
+                Chef *chef = [Chef chefWithName:@"" andUsername:[[Socket sharedSocket] username] inManagedObjectContext:document.managedObjectContext];
                 recipe.headChef = chef;
-                
-                          
             }
             
             [self dismissViewControllerAnimated:YES completion:nil];

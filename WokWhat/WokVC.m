@@ -8,82 +8,184 @@
 
 #import "WokVC.h"
 #import "Recipe+Create.h"
+#import "Socket.h"
+#import "DocumentHelper.h"
 
 @interface WokVC ()
-
+@property (weak, nonatomic) IBOutlet UIView *speechBubble;
+@property (weak, nonatomic) IBOutlet UITextField *usernameTF;
+@property (weak, nonatomic) IBOutlet UITextField *messageTF;
+@property (weak, nonatomic) IBOutlet UIScrollView *ingredientsSV;
+@property (strong, nonatomic)  NSArray *ingredients;
 @end
 
 @implementation WokVC
 
+#pragma mark - Setup
+
+- (void)populateIngredientsSV{
+    CGFloat x = 7, y = 0, width = 32, height = 46;
+    int pad = 4;
+    int tag = 0;
+    for (NSString *ingredient in self.ingredients){
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.tag = tag;
+        [button setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@.png", ingredient]] forState:UIControlStateNormal];
+        //button.imageView.motionEffects
+        button.frame = CGRectMake(x, y, width, height);
+        [button addTarget:self action:@selector(foodAdded:) forControlEvents:UIControlEventTouchUpInside];
+        button.exclusiveTouch = NO;
+        [self.ingredientsSV addSubview:button];
+        x += width + pad;/////
+        tag++;
+    }
+    self.ingredientsSV.scrollEnabled = YES;
+    self.ingredientsSV.contentSize = CGSizeMake(x, height);
+    self.ingredientsSV.delegate = self;
+}
+
 #pragma mark - Getters and Setters
 
--(void) setDocument:(UIManagedDocument *)document{
+- (void)setDocument:(UIManagedDocument *)document{
     if (![document isEqual:self.document]){
         _document = document;
         
         ///////delete
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Recipe"];
-        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name"
-                                                                ascending:YES]];
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+        
         // Execute the fetch
         NSError *error;
         NSArray *matches = [document.managedObjectContext executeFetchRequest:request error:&error];
+        
         // Check what happened in the fetch
         if ([matches count] > 0) {
             Recipe *recipe = matches[0];
-            [recipe dataFromDictionary];
+            NSLog(@"original:%@",recipe);
             
-//            NSLog(@"originalMoc:%@ original:%@",[(Recipe*)matches[0] managedObjectContext], matches[0]);
+            NSData *archived = [recipe archive];
+            NSLog(@"archived:%@",archived);
+            
+            NSError *error = nil;
+            NSDictionary *unArchivedDic = [NSJSONSerialization JSONObjectWithData:archived options:NSJSONReadingMutableContainers error:&error];
+            NSLog(@"unArchived:%@",unArchivedDic);
+            
+//            Recipe *recipe = matches[0];
+//            NSLog(@"original:%@",recipe);
 //            
-//            NSData *archivedObjects = [NSKeyedArchiver archivedDataWithRootObject:matches[0]];
-//            NSLog(@"archived:%@",archivedObjects);
-//            NSData *objectsData = archivedObjects;
-//            if ([objectsData length] > 0) {
-//                Recipe *object = [NSKeyedUnarchiver unarchiveObjectWithData:objectsData];
-//                NSLog(@"unarchived:%@",object);
-//                NSLog(@"moc:%@ docmoc:%@",[object managedObjectContext], document.managedObjectContext);//////figure out moc
+//            NSData *recipeArchive = [recipe archive];
+//            NSLog(@"recipeArchive:%@",recipeArchive);
 //
-//            }
-            
-        }
+//            NSError *error = nil;
+//            NSData *archive = [NSPropertyListSerialization propertyListWithData:recipeArchive options:0 format:NSPropertyListBinaryFormat_v1_0 error:&error];
+//            NSLog(@"archive:%@",archive);
 
+//            NSString *dataString = [recipeArchive base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+//            NSLog(@"dataString:%@",dataString);
+//
+//            NSData *data = [NSData dataWithData:[dataString dataUsingEncoding:NSASCIIStringEncoding]];
+//            NSLog(@"data:%@",data);
+//            NSLog(@"decoding..........");
+//            
+            
+            //take data and turn to string
+            //NSstring *string = [data ]
+           // NSData *data = [NSData dataWithData:[data dataUsingEncoding:NSASCIIStringEncoding]];
+            
+
+            
+//            NSDictionary *unArchived = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:archive];
+//            NSLog(@"unArchived:%@",unArchived);
+            
+//            NSDictionary *unArchived2 = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithData:[dataString dataUsingEncoding:NSASCIIStringEncoding]]];
+//            NSLog(@"unArchived2:%@",unArchived2);
+        }
         //reload
     }
 }
 
-- (IBAction)done:(id)sender {
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
+
 
 #pragma mark - Actions
 
+- (IBAction)pop:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)done:(id)sender {
+    self.speechBubble.hidden = NO;
+}
+
+- (IBAction)cookingSolo:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)send:(id)sender {
+    [[Socket sharedSocket] sendDocument:self.document withMessage:self.messageTF.text toUsername:self.usernameTF.text];
+}
+
 - (IBAction)foodAdded:(UIButton *)sender {
-    NSArray *foodArray = [NSArray arrayWithObjects:@"orange", @"eggplant", nil];
-    NSString *imgName = [NSString stringWithFormat:@"%@Bits.png", [foodArray objectAtIndex:sender.tag]];
-    imgName = @"foodBits.png";////////temp///////////
+    NSString *food = self.ingredients[sender.tag];
+    
+    //add to core data
+    NSMutableDictionary *ingredients = [[self.recipe dictionaryOfIngredients] mutableCopy];
+    NSString *numString = [ingredients objectForKey:food];
+    if (!numString)
+        ingredients[food] = @"1";
+    else{
+        int integer = numString.integerValue + 1;
+        ingredients[food] = [NSString stringWithFormat:@"%d",integer];
+    }
+    [self.recipe setDictionaryOfIngredients:ingredients];
+
+    
+    //add to the wok
+    [self putInWok:food];
+}
+
+
+#pragma mark - Life Cycle
+
+- (void)putInWok:(NSString*)food{//3 food bits each
+    NSString *imgName = [NSString stringWithFormat:@"%@Bit%i.png", food, arc4random() % 3 + 1];
     UIImageView *imgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:imgName]];
-    imgView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height - 100);
-    int w = self.view.frame.size.width/2;
-    int h = w*.7;
-    int x = w/2;
-    int y = self.view.frame.size.height - 200;
+    int w = 32;
+    int h = 32;
+    int x = arc4random() % 160 + 60;
+    int y = self.view.frame.size.height - (arc4random() % 60 + 130);
     CGRect rect = CGRectMake(x, y, w, h);
     imgView.frame =rect;
     [self.view addSubview:imgView];
     
     CGRect offset = CGRectMake(x+8, y+5, w, h);
-
+    
     [UIView animateWithDuration:.2 delay:0.0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
         imgView.frame = offset;
         imgView.frame = rect;
     } completion:nil];
-    
 
     
-
 }
 
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    self.ingredients = @[@"orange", @"eggplant", @"onion",  @"tomato", @"chicken", @"cucumber", @"mushroom", @"broccoli", @"pepper", @"carrot", @"orange", @"eggplant", @"orange", @"eggplant", @"orange"];
+    [self populateIngredientsSV];
+}
 
+- (void)viewDidAppear:(BOOL)animated{
+    NSMutableDictionary *ingredients = [[self.recipe dictionaryOfIngredients] mutableCopy];
+    for (NSString *ingredient in ingredients){
+        int num = [(NSString*)ingredients[ingredient] intValue];
+        for (int i = 0; i < num; i++){
+            [self putInWok:ingredient];
+        }
+    }
+}
 
+-(BOOL)touchesShouldCancelInContentView:(UIView *)view
+{
+    NSLog(@"......");
+    return YES;
+}
 @end

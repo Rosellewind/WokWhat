@@ -2,7 +2,7 @@
 //  Recipe.m
 //  WokWhat
 //
-//  Created by Roselle Milvich on 11/28/13.
+//  Created by Roselle Milvich on 12/2/13.
 //  Copyright (c) 2013 Roselle Milvich. All rights reserved.
 //
 
@@ -14,8 +14,9 @@
 
 @dynamic dateAdded;
 @dynamic descrip;
-@dynamic name;
 @dynamic identifier;
+@dynamic name;
+@dynamic ingredients;
 @dynamic headChef;
 
 @end

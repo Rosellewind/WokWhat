@@ -10,11 +10,12 @@
         <attribute name="dateAdded" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="descrip" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ingredients" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="headChef" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Chef" inverseName="recipe" inverseEntity="Chef" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Recipe" positionX="0" positionY="0" width="128" height="118"/>
-        <element name="Chef" positionX="-191" positionY="-0" width="128" height="88"/>
+        <element name="Chef" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Recipe" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -14,7 +14,8 @@
 - (NSDictionary*)dictionary{
     //add attributes to the dictionary
     NSArray * attributeNameArray = [[NSArray alloc] initWithArray:self.entity.attributesByName.allKeys];
-    NSDictionary *myDictionary = [self dictionaryWithValuesForKeys:attributeNameArray];
+    NSMutableDictionary *myDictionary = [[self dictionaryWithValuesForKeys:attributeNameArray] mutableCopy];
+    myDictionary[@"dateAdded"] = [NSNumber numberWithDouble:self.dateAdded.timeIntervalSinceNow];
     return myDictionary;
 }
 

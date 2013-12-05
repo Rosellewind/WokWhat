@@ -11,7 +11,9 @@
 
 @interface Recipe (Create)/*<NSCoding>*/
 
-- (NSData*)dataFromDictionary;
+- (NSData*)archive;
+- (NSDictionary*)dictionaryOfIngredients;
+- (void)setDictionaryOfIngredients:(NSDictionary*) dictionary;
 +(Recipe*) recipeWithName:(NSString*) name andDescription:(NSString*) descrip inDocument:(UIManagedDocument*) document;
 +(void) deleteRecipeWithName:(NSString*) name inManagedObjectContext:(NSManagedObjectContext*) context;
 

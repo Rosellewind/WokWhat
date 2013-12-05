@@ -82,6 +82,20 @@
                 WokVC *vc = (WokVC*)segue.destinationViewController;
                 [DocumentHelper openDocumentNamed:[self.tableData objectAtIndex:indexPath.row] usingBlock:^(UIManagedDocument *document) {
                     [vc performSelector:@selector(setDocument:) withObject:document];
+                    
+                    //get recipe
+                    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Recipe"];
+                    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+                    // Execute the fetch
+                    NSError *error = nil;
+                    NSArray *matches = [document.managedObjectContext executeFetchRequest:request error:&error];
+                    // Check what happened in the fetch
+                    if (!matches || ([matches count] > 1)) {  // nil means fetch failed; more than one impossible
+                        NSLog(@"errror finding a match");
+                    } else if ([matches count] == 1) {
+                        [vc performSelector:@selector(setRecipe:) withObject:matches[0]];
+                    }
+
                 }];
             }
         }
