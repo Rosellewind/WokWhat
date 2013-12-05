@@ -49,59 +49,8 @@
 - (void)setDocument:(UIManagedDocument *)document{
     if (![document isEqual:self.document]){
         _document = document;
-        
-        ///////delete
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Recipe"];
-        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-        
-        // Execute the fetch
-        NSError *error;
-        NSArray *matches = [document.managedObjectContext executeFetchRequest:request error:&error];
-        
-        // Check what happened in the fetch
-        if ([matches count] > 0) {
-            Recipe *recipe = matches[0];
-            NSLog(@"original:%@",recipe);
-            
-            NSData *archived = [recipe archive];
-            NSLog(@"archived:%@",archived);
-            
-            NSError *error = nil;
-            NSDictionary *unArchivedDic = [NSJSONSerialization JSONObjectWithData:archived options:NSJSONReadingMutableContainers error:&error];
-            NSLog(@"unArchived:%@",unArchivedDic);
-            
-//            Recipe *recipe = matches[0];
-//            NSLog(@"original:%@",recipe);
-//            
-//            NSData *recipeArchive = [recipe archive];
-//            NSLog(@"recipeArchive:%@",recipeArchive);
-//
-//            NSError *error = nil;
-//            NSData *archive = [NSPropertyListSerialization propertyListWithData:recipeArchive options:0 format:NSPropertyListBinaryFormat_v1_0 error:&error];
-//            NSLog(@"archive:%@",archive);
-
-//            NSString *dataString = [recipeArchive base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-//            NSLog(@"dataString:%@",dataString);
-//
-//            NSData *data = [NSData dataWithData:[dataString dataUsingEncoding:NSASCIIStringEncoding]];
-//            NSLog(@"data:%@",data);
-//            NSLog(@"decoding..........");
-//            
-            
-            //take data and turn to string
-            //NSstring *string = [data ]
-           // NSData *data = [NSData dataWithData:[data dataUsingEncoding:NSASCIIStringEncoding]];
-            
-
-            
-//            NSDictionary *unArchived = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:archive];
-//            NSLog(@"unArchived:%@",unArchived);
-            
-//            NSDictionary *unArchived2 = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:[NSData dataWithData:[dataString dataUsingEncoding:NSASCIIStringEncoding]]];
-//            NSLog(@"unArchived2:%@",unArchived2);
         }
         //reload
-    }
 }
 
 
@@ -109,6 +58,7 @@
 #pragma mark - Actions
 
 - (IBAction)pop:(id)sender {
+    [self.document closeWithCompletionHandler:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

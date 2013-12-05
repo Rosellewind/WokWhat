@@ -14,7 +14,7 @@
 
 @implementation Recipe (Create)
 
-- (NSData*)archive{
+- (NSString*)archiveString{
     //add attributes to the dictionary
     NSArray * attributeNameArray = [[NSArray alloc] initWithArray:self.entity.attributesByName.allKeys];
     NSMutableDictionary *myDictionary = [[self dictionaryWithValuesForKeys:attributeNameArray] mutableCopy];
@@ -31,11 +31,15 @@
     NSData * archive = [NSKeyedArchiver archivedDataWithRootObject:myDictionary];
     NSLog(@"archive:%@",archive);
 
-    NSString * string = [archive base64EncodedString];
-    NSLog(@"string:%@",string);
+    NSString * dataString = [archive base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    //NSString * dataString1 = [archive base64EncodedString];
+    NSLog(@"string:%@",dataString);
+    //NSLog(@"string1:%@",dataString1);
 
-    NSData * unarchive    = [NSData dataFromBase64String:string];
+   // NSData * unarchive    = [dataString dataUsingEncoding:NSASCIIStringEncoding];
+    NSData * unarchive    = [NSData dataFromBase64String:dataString];
     NSLog(@"unarchive:%@",unarchive);
+    //NSLog(@"unarchive1:%@",unarchive1);
 
     NSDictionary *dic = [NSKeyedUnarchiver unarchiveObjectWithData:unarchive];
     NSLog(@"dic:%@",dic);
@@ -50,7 +54,7 @@
 //    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:myDictionary options:0 error:&error];
 //    NSLog(@"jsonData:%@",jsonData);
 
-    return archive;
+    return dataString;
 }
 
 - (NSDictionary*)dictionaryOfIngredients{

@@ -8,6 +8,7 @@
 
 #import "Socket.h"
 #import "Recipe+Create.h"
+#import "NSData+Base64.h"
 
 
 static NSString *unqKey = @"6to$3";
@@ -16,6 +17,8 @@ static NSString *unqKey = @"6to$3";
 @property (nonatomic, strong) NSInputStream *inputStream;
 @property (nonatomic, strong) NSOutputStream *outputStream;
 @property (nonatomic, strong) NSMutableArray *messages;
+@property (nonatomic, strong) NSString *stringCutOff;
+
 @end
 
 @implementation Socket
@@ -39,6 +42,7 @@ static NSString *unqKey = @"6to$3";
         [self initNetworkCommunication];
         self.messages = [[NSMutableArray alloc]init];
         self.isSignedIn = NO;
+        self.stringCutOff = @"";
     }
     return self;
 }
@@ -77,51 +81,73 @@ static NSString *unqKey = @"6to$3";
     NSArray *matches = [document.managedObjectContext executeFetchRequest:request error:&error];
     // Check what happened in the fetch
     if ([matches count] > 0) {
-//        NSString *dataString = [[matches[0] archive] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-//        NSString *dataString = [[matches[0] archive] base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-        NSString *string = [NSString stringWithFormat:@"%@/from/%@/password/%@/sendTo/%@/message/%@/data/", unqKey, self.username, self.password, username, message];
+        NSString *dataString = [matches[0] archiveString];
+        NSString *string = [NSString stringWithFormat:@"%@/from/%@/password/%@/sendTo/%@/message/%@/data/%@", unqKey, self.username, self.password, username, message, dataString];
         NSMutableData *data = [NSMutableData dataWithData:[string dataUsingEncoding:NSASCIIStringEncoding]];
-        NSData *recData = [matches[0] archive];
-        [data appendData:recData];
-        NSLog(@"sending...............%@",data);
         [self sendData:data];
     }
 }
 
-- (void)sendDataFromString:(NSString*)string{//////////maybe delete
-    NSData *data = [NSData dataWithData:[string dataUsingEncoding:NSASCIIStringEncoding]];
-    [self sendData:data];
+- (void)gotDictionary:(NSDictionary*)dic{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Recipe"];
+    
 }
+
 
 
 #pragma mark - message received
 
 - (void)messageReceived:(NSString*)message{
-    //self.isSignedIn = YES;
     NSLog(@"message:%@",message);
+    NSLog(@"self.stringCutOff:%@",self.stringCutOff);
+
     NSArray *a = [message componentsSeparatedByString:@"/"];
-    if (a.count > 2 && [a[0] isEqualToString:unqKey]){
+    NSLog(@"****a:%@",a);
+    if (self.stringCutOff.length > 0){
+        NSLog(@"..............................................");
+        NSString *dataString = self.stringCutOff =[self.stringCutOff stringByAppendingString:message];
+        NSLog(@"dataString:%@",dataString);
+        NSData * unarchive = [NSData dataFromBase64String:dataString];
+        NSLog(@"unarchive11111:%@",unarchive);
+        NSDictionary *dic = nil;
+        @try {
+            dic = [NSKeyedUnarchiver unarchiveObjectWithData:unarchive];
+            NSLog(@"dic:%@",dic);
+        }
+        @catch (NSException *exception) {
+            NSLog(@"...............fail................");
+        }
+        if (dic){
+            self.stringCutOff = @"";
+            [self gotDictionary:dic];
+        }
+    }
+    else if (a.count > 2 && [a[0] isEqualToString:unqKey]){
         if ([a[1] isEqualToString:@"from"]){
             NSString *name = a[2];
-            NSString *message = a[4];
-            NSArray *dataArray = [a subarrayWithRange:NSMakeRange(6, a.count - 6)];
-            NSString *dataString = [dataArray componentsJoinedByString:@"/"];
-            NSLog(@"dataRecieved:%@",dataString);
-            //do something with the data, notification? insert into Core Data?
-            //NSPropertyListBinaryFormat_v1_0
-            
-            //NSData * data    = [NSData dataFromBase64String:dataString];
-            //id<nscoding> obj = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-//            NSData *data = [[NSData alloc] initWithBase64EncodedString:dataString options:0];
+            NSString *msg = a[4];
+            int count=0;
+            for (int i = 0; i < 6; i++){
+                NSString *str = a[i];
+                count += (str.length + 1);
+            }
+            NSString *dataString = [message substringFromIndex:count];
+            NSLog(@"dataString:%@",dataString);
 
-
-
-            //NSData *data = [dataString dataUsingEncoding:NSASCIIStringEncoding];
-//            NSLog(@"data:%@",data);
-//            NSDictionary *unArchived = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:data];
-            NSError *error = nil;
-            NSDictionary *unArchivedDic = [NSJSONSerialization JSONObjectWithData:dataString options:NSJSONReadingMutableContainers error:&error];
-            NSLog(@"name:%@ message:%@ data:%@", name, message, unArchivedDic);
+            NSData * unarchive = [NSData dataFromBase64String:dataString];
+            NSLog(@"unarchive:%@",unarchive);
+            NSDictionary *dic = nil;
+            @try {
+                dic = [NSKeyedUnarchiver unarchiveObjectWithData:unarchive];
+                NSLog(@"dic:%@",dic);
+            }
+            @catch (NSException *exception) {
+                dataString = self.stringCutOff =[self.stringCutOff stringByAppendingString:dataString];
+            }
+            if (dic){
+                self.stringCutOff = @"";
+                [self gotDictionary:dic];
+            }
         }
         else{
             NSString *successOrFail = a[1];
